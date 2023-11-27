@@ -1,0 +1,671 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*
+    BREAKPOINTS
+    LARGE LAPTOP 1440px
+    
+*/
+* {
+    padding: 0;
+    margin: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9637E5;
+}
+
+::-webkit-scrollbar {
+    background: #252525;
+    width: 0.6rem;
+}
+
+html {
+    min-height: 100%;
+    background-color: #252525;
+    background-image: url("../img/background_6.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    scroll-behavior: smooth;
+}
+
+button{
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: none;
+}
+
+.class_logo {
+    width: auto;
+}
+
+nav div {
+    height: 100px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+ul {
+    flex-wrap: wrap;
+}
+
+li {
+    margin: 50px;
+    list-style-type: none;
+}
+
+/* 
+.logo, .names{
+    width: 299px;
+    height: 99px;
+    text-align: center;
+}
+
+.names{
+    width: 1000px;
+} */
+
+.ulNavbar {
+    display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.ulNavbar li a {
+    font-family: Righteous;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #F1F1F1;
+}
+
+section {
+    display: flex;
+}
+
+.section_1 {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.section_1_text {
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 2rem;
+    width: 20vw;
+}
+
+.section_1_planeta {
+    width: 39vw;
+    animation: planeta_girar 80s infinite linear;
+}
+
+@keyframes planeta_girar {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.section_2 {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.caixasMotivos {
+    width: 75vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.caixasMotivos div {
+    margin-top: 5rem;
+    background-color: #f1f1f1;
+    border-radius: 36px;
+    width: 20vw;
+    height: 35vh;
+}
+
+.astronautas_caixa {
+    position: relative;
+    width: 3.7rem;
+    bottom: 4rem;
+    left: 6rem;
+}
+
+.caixasMotivos_texto {
+    text-align: center;
+    color: #252525;
+    font-family: Poppins;
+    font-size: 1.2rem;
+}
+
+.section_2_titulo {
+    font-family: Poppins;
+    color: #9637E5;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.caixasIntegrantes {
+    display: flex;
+    width: 80vw;
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+
+.integrantes {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 90px;
+    margin-top: 2rem;
+    border-radius: 36px;
+    width: 40vw;
+    height: 80vh;
+    background: #f1f1f1;
+    animation: integrantes_animacao 30s infinite linear;
+}
+
+.contato_integrantes {
+    align-items: center;
+    justify-content: space-between;
+}
+
+#github {
+    font-size: 4rem;
+    color: #252525;
+}
+
+#linkedin {
+    font-size: 4rem;
+    color: #0077b5;
+}
+
+.caixasIntegrantes img {
+    border-radius: 56rem;
+    width: 13rem;
+    padding: 1rem;
+    height: auto;
+}
+
+@keyframes integrantes_animacao {
+    0% {
+        right: -50vw;
+    }
+
+    100% {
+        right: 83vw;
+    }
+}
+
+.integrante_nome {
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #252525;
+}
+
+.integrante_funcao {
+    font-family: Righteous;
+    font-weight: bold;
+    text-align: center;
+    color: #9637E5;
+}
+
+.integrante_contato {
+    font-family: Poppins;
+    color: #9637E5;
+}
+
+.bar_contato {
+    background-color: #9637E5;
+    margin-top: 0.3rem;
+    width: 8rem;
+    height: 2px
+}
+
+.footer_ondas {
+    position: relative;
+    margin-top: 4rem;
+}
+
+.footer_conteudo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -2rem;
+    position: relative;
+    background-color: #9637E5;
+    width: 100%;
+    height: 40vh;
+}
+
+.footer_conteudo div{
+    width: 20rem;
+}
+
+.caixasMotivos div {
+    width: 30%;
+    height: 35vh;
+
+}
+
+.integrantes {
+    margin-left: 109px;
+    height: auto;
+}
+
+li {
+    margin: 38px;
+}
+
+#menuToggle {
+    display: none;
+}
+
+@media only screen and (max-width:1440px) and (min-width:1024px) {
+
+    .caixasMotivos div {
+        width: 30%;
+        height: 35vh;
+
+    }
+
+    .integrantes {
+        margin-left: 109px;
+        height: auto;
+    }
+
+    li {
+        margin: 38px;
+    }
+
+    #menuToggle {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:1023px) {
+    li {
+        margin: 22px;
+    }
+
+    .caixasMotivos div {
+        width: 28vh;
+        height: 28vh;
+
+    }
+
+    .integrantes {
+        height: auto;
+    }
+
+    #menuToggle {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .ulNavbar {
+        display: none;
+    }
+
+    #menuToggle {
+        display: inline;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    #menu {
+        position: absolute;
+        width: 300px;
+        margin: -100px 0 0 39px;
+        padding: 50px;
+        padding-top: 125px;
+        background: #ededed;
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        transform-origin: 0% 0%;
+        transform: translate(-100%, 0);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    }
+
+    #menuToggle input {
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: relative;
+        top: 24px;
+        /* left: -5px; */
+        /* cursor: pointer; */
+        opacity: 0;
+        z-index: 2;
+        -webkit-touch-callout: none;
+    }
+
+    .caixasMotivos_texto {
+        font-size: .9rem;
+    }
+
+    .div_cine_info img{
+        width: 50%!important;
+    }
+
+    .section_cine{
+        height: 71em!important;
+        margin-bottom: 20em!important;
+    }
+}
+
+@media only screen and (max-width:700px) {
+
+    #menuToggle {
+        left: -156px !important;
+    }
+
+    #menu {
+        width: 60vh !important;
+        transform: translate(-105%, 0);
+        transition: transform 0.5s cubic-bezier(0.90, 0.2, 0.05, 1.0);
+    }
+
+    .div_cine_info{
+        width: 70%;
+    }
+
+    .div_cine_info img{
+        width: 50%!important;
+    }
+
+    .section_cine{
+        height: 53em!important;
+        margin-bottom: 20em!important;
+    }
+
+    p{
+        font-size: 1.4rem!important;
+    }
+}
+
+@media only screen and (max-width:472px) {
+    body {
+        font-size: 89%;
+    }
+
+    .caixasIntegrantes img {
+
+        width: 7rem;
+    }
+
+    .section_2_titulo {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width:426px) {
+    #menuToggle {
+        left: -90px !important;
+    }
+
+    body {
+        font-size: 89%;
+    }
+
+    .section_2_titulo {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 80% !important;
+    }
+
+    #menu {
+        width: 44vh !important;
+    }
+
+    .div_cine_info img{
+        width: 50%!important;
+    }
+
+    .section_cine{
+        height: 53em!important;
+        margin-bottom: 32em!important;
+    }
+
+}
+
+@media only screen and (max-width:320px) {
+    #menuToggle {
+        left: -18% !important;
+    }
+
+    .section_2_titulo {
+        display: none;
+    }
+
+    #menu {
+        width: 35vh !important;
+    }
+
+    .div_cine_info img{
+        width: 50%!important;
+    }
+
+    .section_cine{
+        height: 53em!important;
+        margin-bottom: 40em!important;
+    }
+    
+}
+
+/*Menu*/
+
+#menuToggle {
+    position: relative;
+    top: 0%;
+    left: -273px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#menuToggle a {
+    text-decoration: none;
+    color: white;
+
+    transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+    color: tomato;
+}
+
+
+#menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: relative;
+    top: 26px;
+    left: -4px;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+    /* background-color: wheat; */
+    /* color: wheat; */
+    /* font-family: 'Poppins'; */
+    /* font-weight: bold; */
+    /* font-size: 85px; */
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+
+    background: #cdcdcd;
+    border-radius: 3px;
+
+    z-index: 1;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+    transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked~span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #fff;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked~span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked~span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+    position: absolute;
+    width: 84vh;
+    height: 100vh;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 132px;
+    background: #252525c2;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#menu li {
+    padding: 17px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked~ul {
+    transform: none;
+}
+
+/* 
+#eb1616
+#191c24
+#6c7293
+#000000 
+*/
+
+.section_cine{
+    display: flex;
+    flex-direction: column;
+    background: #191c24;
+    height: 50em;
+    margin: 1.5rem;
+    border-radius: 36px;
+    margin-top: 10rem;
+    padding: 5rem;
+    align-items: center;
+}
+
+.section_cine h1{
+    color: #d22929;
+    font-family: Poppins;
+    font-size: 2.5rem;
+    padding-left: 4rem;
+}
+
+.section_cine p{
+    color: #F1F1F1;
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.div_cine_info{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.div_cine_info div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+    margin-bottom: 3rem;
+}
+
+.div_cine_info_2{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.footer_conteudo p{
+    color: #f1f1f1;
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 1.6rem;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../public/CineGuardian/css/crud.css" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body onload="listarUsers()">
+
+
+    <div id="modal">
+        <img src="../img/botao-fechar.png" id="btnClose" onclick="modalSpawn(0)">
+        <h3 id="h3">Editar Usuario</h3>
+        <input placeholder="Nome" type="text" id="ipt_nomeEditar">
+        <input placeholder="email" type="text" id="ipt_emailEditar">
+        <input placeholder="senha" type="text" id="ipt_passwordEditar">
+        <button id="editarModal" onclick="editarUsuario()">editar</button>
+    </div>
+    <div id="modalcadastrar">
+        <img src="../img/botao-fechar.png" id="btnClose" onclick="modalSpawn(0)">
+        <h3>cadastrar Usuario</h3>
+        <input placeholder="Nome" type="text" id="ipt_nome">
+        <input placeholder="email" type="text" id="ipt_email">
+        <input placeholder="sexo" type="text" id="ipt_password">
+        <button id="cadastrarModal" onclick="cadastrarUser()">cadastrar</button>
+    </div>
+
+    <tbody>
+        <table id="table">
+        </table>
+        <button id="cadastrar" onclick="modalSpawn(-0.2)">cadastrar</button>
+    </tbody>
+    <script src="../js/index.js"></script>
+
+</body>
+
+</html>
+<script>
+    var idEdit = null
+    function cadastrarUser() {
+        var nomeVar = ipt_nome.value;
+        var emailVar = ipt_email.value;
+        var passwordVar = ipt_password.value;
+        console.log(nomeVar[0])
+        if (nomeVar == "" || emailVar == "" || passwordVar == "") {
+            alert("Preencha os campos corretamente");
+            return false;
+        }
+        fetch("pessoa/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                passwordServer: passwordVar
+            })
+        }).then(function (resposta) {
+            console.log("resposta : ", resposta)
+
+            if (resposta.ok) {
+                alert("Cadastro feito com sucesso");
+                setTimeout(() => {
+                    window.location = "index.html"
+                }, 2000)
+            } else {
+                throw ("Erro ao realizar cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+        return false
+    }
+    function place(id) {
+        idEdit = id;
+        id = id - 1;
+        fetch('pessoa/listar', { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    h3.innerHTML = `Editar usuario com id ${id+1}`
+                    ipt_nomeEditar.placeholder = resposta[id].name;
+                    ipt_emailEditar.placeholder = resposta[id].email
+                    ipt_sexoEditar.placeholder = resposta[id].password
+                })
+            } else {
+                console.log("Nenhum user encontrado.");
+            }
+        })
+    }
+    function editarUsuario(){
+        var nomeVar = ipt_nomeEditar.value;
+        var emailVar = ipt_emailEditar.value;
+        var passwordVar = ipt_passwordEditar.value;
+        if(nomeVar == "" || emailVar == "" || passwordVar == ""){
+            alert("error")
+        }else{
+            fetch(`pessoa/editar/${idEdit}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idServer : idEdit,
+                    nomeServer : nomeVar,
+                    emailServer: emailVar,
+                    passwordServer: passwordVar 
+                })
+            }).then(function (resposta){
+                if(resposta.ok){
+                    alert("Alteração feita")
+                    setTimeout(()=>{
+                        window.location = "index.html"
+                    },1000)
+                }else if ( resposta.status == 404){
+                    window.alert("404");
+                }else{
+                    throw("Erro ao realizar comando")
+                }
+            }).catch(function (resposta){
+                console.log(`#ERRO: ${resposta}`);
+            })
+        }
+    }
+    function listarUsers() {
+        table.style.maxHeight = "700px"
+        table.style.overflow = "auto"
+        fetch('pessoa/listar', { cache: 'no-store' }).then(function (response) {
+            console.log(response);
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    table.innerHTML =
+                        `
+                    <tr>
+                        <th>id</th>
+                        <th>nome</th>
+                        <th>email</th>
+                        <th>sexo</th>
+                        <th>editar</th>
+                        <th>excluir</th>
+                    </tr>
+                    `
+                    for (let i = 0; i < resposta.length; i++) {
+                        table.innerHTML +=
+                            `
+                            <tr>
+                                <td>${resposta[i].id}</td>
+                                <td>${resposta[i].name}</td>
+                                <td>${resposta[i].email}</td>
+                                <td>${resposta[i].password}</td>
+                                <td><button id="editar" onclick="modalSpawn(1), place(${resposta[i].id})" >editar</button></td>
+                                <td><button id="excluir" onclick="deletar(${resposta[i].id})">excluir</button></td>
+                            </tr>
+                                `
+                    }
+                })
+            } else {
+                console.log("Nenhum dado encontrado.");
+            }
+        }).catch(function (error) {
+            console.error("Erro na obtenção dos dados para a table : " + error.message);
+        });
+    }
+    function deletar(idUserDelete){
+        fetch(`/pessoa/delete/${idUserDelete}`, {
+            method: "DELETE",
+            headers:{
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta){
+            if(resposta.ok){
+                window.alert(200);
+                window.location = "index.html";
+            }else if(resposta.status == 404){
+                window.alert(404)
+            }else{
+                throw("Erro ao realizar request: " + resposta.status)
+            }
+        }).catch(function (resposta) {
+        console.log(`#ERROR: ${resposta}`);
+    });
+    }
+
+</script>

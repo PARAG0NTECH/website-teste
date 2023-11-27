@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Estatísticas</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/pipoca.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body onload="gerarDadosUserAtual()">
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="CineGuardian.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><img src="./img/pipoca.png" width="40" height="40" alt="">CineGuardian</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="./img/user-img.png" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0" id="h6_name"></h6>
+                        <span id="type_user"></span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="#" class="nav-item nav-link" id="pag_totens"><i
+                            class="fa fa-tachometer-alt me-2"></i>Totens</a>
+                    <a href="./cadastroTecnico.html" class="nav-item nav-link" id="pag_tecnico"><i
+                            class="fa fa-tachometer-alt me-2"></i>Cadastrar Técnico</a>
+                    <a href="chart.html" class="nav-item nav-link active" id="pag_estatisticas"><i
+                            class="fa fa-chart-bar me-2"></i>Estatísticas</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="CineGuardian.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="./img/user-img.png" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex" id="span_nameUser"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="./perfil.html" class="dropdown-item">Meu perfil</a>
+                            <a href="#" class="dropdown-item">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+            <!-- Chart Start -->
+
+            <div class="container-fluid pt-4 px-4">
+
+                <style>
+                    @media (min-width: 320px) {
+                        table {
+                            display: flex;
+                            flex-wrap: wrap;
+                        }
+                    }
+                </style>
+
+                <div style="
+                display: flex; 
+                flex-wrap:wrap; 
+                justify-content: space-evenly; 
+                background-color: #191C24; 
+                width: auto; 
+                height: auto;
+                align-items: center;
+                border-radius: 10px;
+                margin-bottom: 4vh;
+                padding: 2vw;
+                overflow-x:auto;">
+                    <select name="totens" id="totemSelector" onchange="mudarTotem(this.value)" style="
+                        background-color: #EB1616; 
+                        color: #f1f1f1; 
+                        font-weight: 600;
+                        border-radius: 10px;
+                        height: 4rem;
+                        width: auto;
+                        justify-content: center;
+                        text-shadow: 1px 1px 2px #0000;">
+                        <option value="">Nenhum totem</option>
+                    </select>
+
+                    <style>
+                        table,
+                        th,
+                        td {
+                            border: 2px solid #eb1616cf;
+                            border-collapse: collapse;
+                            flex-wrap: wrap;
+                        }
+
+                        th,
+                        td {
+                            padding: 0.8rem;
+                        }
+
+                        th {
+                            font-size: 1.3rem;
+                            color: #f1f1f1;
+                        }
+                    </style>
+
+                    <table style="border: 1px solid #EB1616;
+                    border-collapse: collapse; 
+                    text-shadow: 1px 1px 2px #0000;
+                    ">
+                        <th>ID</th>
+                        <th>Apelido</th>
+                        <th>Status</th>
+                        <tr>
+                            <td id="id_computer"></td>
+                            <td id="nick_name"></td>
+                            <td id="info"></td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-sm btn-primary" style="
+                    height: 3rem;
+                    width: auto;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    text-shadow: 1px 1px 2px #0000; "
+                    onclick="reiniciarMaquina()">
+                        Reiniciar</button>
+                </div>
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h3 class="mb-4">Processador</h3>
+                            <span>Processador : <span style="font-size: 1rem; color: #fff; font-weight: bold">Intel</span></p></span>
+                            <span>Arquitetura: <span style="font-size: 1rem; color: #fff; font-weight: bold">x64</span></p></span>
+                            <span id="so">Sistema Operacional: </span>
+                            <span id="usoCpu">Porcentagem de Uso: </span>
+                            <h5 id="porcentagemMaquinas"></h5>
+                            <canvas id="myBarChartProcessador"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h3 class="mb-4">Memória RAM</h3>
+                            <span id="totalRam">Total: </p></span>
+                            <span id="utilizadoRam">Utilizado: </p></span>
+                            <span id="usoRam">Porcentagem de Uso: </span>
+                            <h5 id="reiniciadasDia"></h5>
+                            <canvas id="myBarChartRam" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-secondary rounded h-100 p-4">
+                                <h3 class="mb-4">Armazenamento</h3>
+                                <span id="totalArmazenamento">Total: </p></span>
+                                <span id="utilizadoArmazenamento">Utilizado: </p></span>
+                                <span id="usoArmazenamento">Porcentagem de Uso:  </span>
+                                <h5 id="porcentagemMaquinas"></h5>
+                                <canvas id="myBarChartArmazenamento"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-secondary rounded h-100 p-4">
+                                <h3 class="mb-4">Internet - MB - Giga</h3>
+                                <h5 id="reiniciadasDia"></h5>
+                                <canvas id="myBarChartInternet"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chart End -->
+
+
+
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/actions.js"></script>
+</body>
+
+</html>
+<script>
+    var accountId = localStorage.getItem('userId');
+    //var idEmpresa = localStorage.getItem(parseInt("idEmpresa"));
+    var idEmpresa = 19;
+    var arrayTotem = [];
+
+    var id_computer = document.getElementById("id_computer");
+    var nick_name = document.getElementById("nick_name");
+    var info = document.getElementById("info");
+
+    var percentual_cpu = null;
+    var percentual_disk = null;
+    var percentual_ram = null;
+
+    var ideal = "rgb(14, 173, 105)";
+    var critico = "rgb(235 22 22 / 47%)";
+
+    puxarMetricas()
+
+    var ctx6 = $("#myBarChartArmazenamento").get(0).getContext("2d");
+
+    var tempo = [1, 2, 3, 4, 5];
+    var dados_mbbits = [10, 15, 8, 12, 20];
+    var dados_mbbits_por_segundo = dados_mbbits.map(function (valor) {
+        return valor;
+    });
+
+    //SLACK
+    function mensagemSlack(mensagem){
+        fetch("/slack/send", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                text: mensagem,
+            })
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    //PUXAR METRICAS
+
+    function puxarMetricas(){
+        fetch(`/pessoa/puxarMetrica?tb_companies_id=${idEmpresa}`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+        }).then(function (resposta) {
+            console.log("resposta : ", resposta)
+
+            if (resposta.ok) {
+                
+                percentual_cpu = resposta[resposta.length - 1].percentual_cpu;
+                percentual_disk = resposta[resposta.length - 1].percentual_disk;
+                percentual_ram = resposta[resposta.length - 1].percentual_ram;
+
+            } else {
+                throw ("Erro ao puxar as métricas");
+            }
+        }).catch(function (resposta) {  
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    //GRAFICOS
+
+    function graficoArmazenamento(resposta, idMaquina){
+        //console.log('iniciando plotagem do gráfico...');
+        var cor = ideal;
+
+        if(resposta[0].disk_usage >= percentual_disk){
+            mensagemSlack(`Alerta! Sua memória ram se encontra em ${resposta[0].disk_usage}% de uso`)
+            cor = critico
+            Swal.fire({
+                position: "top",
+                title: "Alerta!",
+                text: "Seu HD se encontra em leitura crítica!.",
+                color: "#fff",
+                icon: "warning",
+                iconColor: "#EB1616",
+                background: "#191C24",
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+        }
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Leitura',
+                data: [],
+                fill: true,
+                borderColor: cor,
+                backgroundColor: cor,
+                tension: 0.1
+            }]
+        };
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.disk_total);
+            dados.datasets[0].data.push(registro.disk_usage);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myBarChartArmazenamento`),
+            config
+        );
+
+        setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+    }
+  
+    function updateGraficoArmazenamento(idMaquina, dados, myChart){
+    
+        fetch(`/totem/dadosAtual?idmaquina=${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+
+                    if (novoRegistro[0].disk_usage == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        //avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].disk_usage)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].disk_usage); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].disk_usage); // incluir uma nova medida de umidade
+
+                        myChart.update();
+                    }
+
+
+                    var usoArmazenamento = document.getElementById("usoArmazenamento");
+                    var totalArmazenamento = document.getElementById("totalArmazenamento");
+                    var utilizadoArmazenamento = document.getElementById("utilizadoArmazenamento");
+                    
+                    var total = novoRegistro[novoRegistro.length - 1].disk_total 
+                    var utilizado = novoRegistro[novoRegistro.length - 1].disk_usage
+                    var porcentagemUso = (utilizado / total) * 100
+            
+                    totalArmazenamento.innerHTML =`<p>Total: <span style="font-size: 1rem; color: #fff; font-weight: bold">${total} GB</span> </p>`;
+                    utilizadoArmazenamento.innerHTML =`<p>Utilizado: <span style="font-size: 1rem; color: #fff; font-weight: bold">${utilizado} GB</span></p>`;
+                    usoArmazenamento.innerHTML =`Porcentagem de uso: <spam style="font-size: 1rem; color: #fff; font-weight: bold">${porcentagemUso}%</spam>`;
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+
+    function graficoProcessador(resposta, idMaquina){
+        console.log('iniciando plotagem do gráfico...');
+
+        var cor = ideal;
+
+        // console.log('iniciando plotagem do gráfico...');
+        if(resposta[0].cpu_usage >= percentual_cpu){
+         mensagemSlack(`Alerta! Seu processador está em ${resposta[0].cpu_usage}% de uso`)
+         cor = critico
+         Swal.fire({
+            position: "top",
+            title: "Alerta!",
+            text: "Seu HD se encontra em leitura crítica!.",
+            color: "#fff",
+            icon: "warning",
+            iconColor: "#EB1616",
+            background: "#191C24",
+            showConfirmButton: false,
+            timer: 1500
+          });
+ 
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Uso do processador (em %)',
+                data: [],
+                fill: true,
+                borderColor: cor,
+                backgroundColor: cor,
+                tension: 0.1
+            }]
+        };
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.cpu_total);
+            dados.datasets[0].data.push(registro.cpu_usage);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myBarChartProcessador`),
+            config
+        );
+
+        setTimeout(() => updateGraficoProcessador(idMaquina, dados, myChart), 2000);
+    }
+    }
+ 
+    function updateGraficoProcessador(idMaquina, dados, myChart){
+        fetch(`/totem/dadosAtual?idmaquina=${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+
+                    if (novoRegistro[0].cpu_usage == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        //avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].cpu_usage)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].cpu_usage); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].cpu_usage); // incluir uma nova medida de umidade
+
+                        myChart.update();
+                    }
+
+
+                    var total = novoRegistro[novoRegistro.length - 1].cpu_total
+                    var utilizado = novoRegistro[novoRegistro.length - 1].cpu_usage
+                    var porcentagemUso = (novoRegistro[novoRegistro.length - 1].cpu_usage / novoRegistro[novoRegistro.length - 1].cpu_total) * 100
+                    var sistemaOperacional = novoRegistro[novoRegistro.length - 1].system_info
+            
+                    var so = document.getElementById("so");
+                    var usoCPU = document.getElementById("usoCpu");
+            
+                    so.innerHTML = `<p>Sistema Operacional: <span style="font-size: 1rem; color: #fff; font-weight: bold">Ubuntu</span></p>`
+                    usoCPU.innerHTML = `<p>Processador: <span style="font-size: 1rem; color: #fff; font-weight: bold">${utilizado}%</span></p>`
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+       
+
+    }
+
+
+    function graficoRam(resposta, idMaquina){
+        var cor = ideal;
+
+       // console.log('iniciando plotagem do gráfico...');
+       if(resposta[0].ram_usage >= percentual_ram){
+        mensagemSlack(`Alerta! Sua memória ram se encontra em ${resposta[0].ram_usage}% de uso`)
+        cor = critico
+        Swal.fire({
+            position: "top",
+            title: "Alerta!",
+            text: "Seu HD se encontra em leitura crítica!.",
+            color: "#fff",
+            icon: "warning",
+            iconColor: "#EB1616",
+            background: "#191C24",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Uso de Ram (em %)',
+                data: [],
+                fill: true,
+                borderColor: cor,
+                backgroundColor: cor,
+                tension: 0.1
+            }]
+        };
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.ram_total);
+            dados.datasets[0].data.push(registro.ram_usage);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myBarChartRam`),
+            config
+        );
+
+        setTimeout(() => updateGraficoRam(idMaquina, dados, myChart), 2000);
+    }
+    
+    function updateGraficoRam(idMaquina, dados, myChart){   
+        fetch(`/totem/dadosAtual?idmaquina=${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    if (novoRegistro[0].ram_usage == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        //avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].ram_usage)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].ram_usage); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].ram_usage); // incluir uma nova medida de umidade
+
+                        myChart.update();
+                    }
+
+                    var usoRam = document.getElementById("usoRam");
+                    var totalRam = document.getElementById("totalRam");
+                    var utilizadoRam = document.getElementById("utilizadoRam");
+                    
+                    var total = novoRegistro[novoRegistro.length - 1].ram_total 
+                    var utilizado = novoRegistro[novoRegistro.length - 1].ram_usage
+                    var porcentagemUso = (utilizado / total) * 100
+            
+                    totalRam.innerHTML =`<p>Total: <span style="font-size: 1rem; color: #fff; font-weight: bold">${total} GB</span> </p>`;
+                    utilizadoRam.innerHTML =`<p>Utilizado: <span style="font-size: 1rem; color: #fff; font-weight: bold">${utilizado} GB</span></p>`;
+                    usoRam.innerHTML =`Porcentagem de uso: <spam style="font-size: 1rem; color: #fff; font-weight: bold">${porcentagemUso}%</spam>`;
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+       
+    }
+
+    
+    function graficoInternet(resposta, idMaquina){
+        //console.log('iniciando plotagem do gráfico...');
+        var cor = ideal;
+
+        if(resposta[0].ram_usage >= percentual_ram){
+            mensagemSlack(`Alerta! Sua internet se encontra em ${resposta[0].ram_usage}% de uso`)
+            cor = critico
+            Swal.fire({
+                position: "top",
+                title: "Alerta!",
+                text: "Sua internet está crítica!.",
+                color: "#fff",
+                icon: "warning",
+                iconColor: "#EB1616",
+                background: "#191C24",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Leitura',
+                data: [],
+                fill: true,
+                borderColor: cor,
+                backgroundColor: cor,
+                tension: 0.1
+            }]
+        };
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.momento_grafico);
+            dados.datasets[0].data.push(registro.umidade);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myBarChartInternet`),
+            config
+        );
+
+        setTimeout(() => updateGraficoInternet(idMaquina, dados, myChart), 2000);
+    }}
+
+    function updateGraficoInternet(idMaquina, dados, myChart){
+        fetch(`/totem/dadosAtual?idmaquina=${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+
+                    if (novoRegistro[0].disk_total * 1.4 == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        //avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].disk_total)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].disk_total * 1.4); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].disk_total * 1.4); // incluir uma nova medida de umidade
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => updateGraficoArmazenamento(idMaquina, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+            
+    }
+
+    //TOTEM
+
+    function reiniciarMaquina(){
+        var idTotem = document.getElementById("totemSelector").value;
+
+        fetch(`https://b0cc-54-159-13-36.ngrok-free.app/restart-instance`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+        })
+            .then(function (response) {
+                console.log(response);
+                if (response.ok) {
+                    
+                } else {
+                    throw new Error("Erro em reiniciar");
+                }
+            })
+            .catch(function (error) {
+                console.error("Erro ao reiniciar a máquina : "+idTotem);
+            });
+    }
+
+    function gerarDadosUserAtual() {
+
+        var h6NameAtual = document.getElementById("h6_name");
+        var spanNameAtual = document.getElementById("span_nameUser");
+        var typeUser = document.getElementById("type_user");
+
+        fetch('/pessoa/listarAllUsers', { cache: 'no-store' }).then(function (response) {
+            console.log(response);
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    for (let i = 0; i < resposta.length; i++) {
+                        if (resposta[i].id == accountId) {
+                            
+                            console.log(resposta[0])
+                            h6NameAtual.textContent = resposta[i].name;
+                            spanNameAtual.textContent = resposta[i].name;
+                            typeUser.textContent = resposta[i].type_user;
+
+                            if (resposta[i].type_user == "dono") {
+                                pag_estatisticas.style.display = "none";
+
+                            } else {
+                                pag_totens.style.display = "none";
+                                pag_tecnico.style.display = "none";
+                            }
+
+                            idEmpresa = resposta[i].fk_empresa
+                            dadosComputers(resposta[i].fk_empresa)
+                            console.log(resposta[i].password)
+                            return true
+                        }
+                    }
+                })
+            } else {
+                console.log("Nenhum dado encontrado.");
+            }
+        }).catch(function (error) {
+            console.error("Erro na obtenção dos dados para a table : " + error.message);
+        });
+    }
+
+    function dadosComputers(idEmpreeesa) {
+        fetch(`/totem/listar?tb_companies_id=${idEmpreeesa}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            },
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Erro na requisição. Status: " + response.status);
+                }
+            })
+            .then(function (resposta) {
+                totemSelector.innerHTML = "";
+
+                console.log("Passei do then antes do for")
+                for (let i = 0; i < resposta.length; i++) {
+
+                    dadosTotenAtual(resposta[i].id) 
+                    totemSelector.innerHTML += `
+                    <option value="${resposta[i].id}" style="font-weight: 600">Totem ${resposta[i].id}</option>
+                `;
+            
+                }
+
+            }) 
+            .catch(function (error) {
+                console.error("Erro na obtenção dos dados para a tabela: " + error.message);
+            });
+    }
+
+    function mudarTotem(idAtual) {
+        fetch(`/totem/listar?tb_companies_id=${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(function (response) {
+                console.log(response);
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Erro na requisição. Status: " + response.status);
+                }
+            })
+            .then(function (resposta) {
+                for (let i = 0; i < resposta.length; i++) {
+                    if (idAtual == resposta[i].id) {
+                        
+                        id_computer.textContent = resposta[i].id;
+                        nick_name.innerHTML = resposta[i].hostname;
+                        info.innerHTML = resposta[i].system_info;
+
+                        dadosTotenAtual(idAtual)
+                        return true;
+                    }
+                }
+            })
+            .catch(function (error) {
+                console.error("Erro na obtenção dos dados para a tabela: " + error.message);
+            });
+    }
+
+    function dadosTotenAtual(idAtual) {
+
+        setInterval(function() {
+            fetch(`/totem/dadosAtual?idmaquina=${idAtual}`)
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Erro na requisição. Status: " + response.status);
+                    }
+                })
+                .then(function (resposta){
+                    if (resposta && resposta.length > 0) {
+                        for (let i = 0; i <= resposta.length; i++) {
+                            console.log(resposta)
+
+                            graficoInternet(resposta, idAtual)
+                            graficoProcessador(resposta, idAtual)
+                            graficoArmazenamento(resposta, idAtual)
+                            graficoRam(resposta, idAtual)
+                            //USO DE INTERNET NAO ESTA NA TABELA tb_statistics
+
+
+                            if (idAtual == resposta[i].id_computer) {
+                                return true; 
+                            }
+                        }
+                    }
+                    throw new Error("Nenhum resultado encontrado.");
+                })
+                .catch(function (error) {
+                    //console.error("Erro na obtenção dos dados para a tabela: " + error.message);
+                });
+        }, 2000);
+    }
+
+
+</script>

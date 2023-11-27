@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Perfil</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/pipoca.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body onload="gerarDadosUserAtual()">
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Carregando...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="CineGuardian.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><img src="./img/pipoca.png" width="40" height="40" alt="">CineGuardian</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="./img/user-img.png" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0" id="h6_name"></h6>
+                        <span id="type_user"></span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="./dashboard.html" class="nav-item nav-link" id="pag_totens"><i class="fa fa-tachometer-alt me-2"></i>Totens</a>
+                    <a href="./cadastroTecnico.html" id="pag_tecnico" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Cadastrar Técnico</a>
+                    <a href="./chart.html" class="nav-item nav-link" id="pag_estatisticas"><i class="fa fa-chart-bar me-2"></i>Estatísticas</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a onclick="editarperfil()" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user-img.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user-img.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user-img.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="./img/user-img.png" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex" id="span_nameUser"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="./perfil.html" class="dropdown-item">Meu perfil</a>
+                            <a href="#" class="dropdown-item">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3" style="display: flex; gap: 5%">
+
+                        <!-- <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Máquinas ativas</p>
+                                <h6 class="mb-0">8 / 10</h6>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Reiniciadas por dia</p>
+                                <h6 class="mb-0">0.30/dia</h6>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Requerimento de suporte</p>
+                                <h6 class="mb-0">4/semana</h6>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+
+            <!-- Sales Chart Start -->
+
+            <!-- Sales Chart End -->
+
+            <!-- GERENCIADOR DE MÁQUINAS -->
+            <div class="container-fluid pt-4 px-4">
+                
+                <div style="background: #191C24; width: auto">
+
+                    <div style="
+                        display: flex; 
+                        justify-content: center; 
+                        align-items: center;
+                        flex-direction: row;
+                        margin-top: -2rem;
+                        flex-wrap: wrap">
+
+                        <img src="././img/user-img.png" style="border-radius: 100%; margin-top: 2rem; ">
+                        <ul style="list-style: none; flex-direction: row; margin-top: 2rem">
+                            <li>
+                                <p style="font-size: 1.5rem;"><span style="color: #fff; font-weight: 700">Nome:</span> <span id="userNome">-------</span></p>
+                            </li>
+                            <li>
+                                <p style="font-size: 1.5rem;"><span style="color: #fff; font-weight: 700;">E-mail:</span> <span id="userEmail">-------</span></p>
+                            </li>
+                            <li>
+                                <p style="font-size: 1.5rem;"><span style="color: #fff; font-weight: 700">Cargo: </span> <span id="userCargo"></span>
+                            </li>
+                            <li>   
+                                <button onclick="editarperfil()" class="btn btn-primary py-3 w-100 mb-4" >
+                                    Editar Perfil
+                                </button> 
+                            </li>
+                            <li>   
+                                <button onclick="editarEmpresa()" class="btn btn-primary py-3 w-100 mb-4" >
+                                    Editar Empresa
+                                </button> 
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div style="display: flex; width: 80%; height: 10px; background: #000; margin: 2rem;"></div>
+                    </div>
+                    <div>
+                        <style>
+                            
+                            ::-webkit-scrollbar {
+                                width: 10px;
+                            }
+
+                            ::-webkit-scrollbar-thumb {
+                            background: #888;
+                            }  
+
+                            .listaTecnicos{
+                                flex-wrap: wrap;
+                                list-style: none; 
+                                text-wrap: wrap;
+                                flex-direction: column;
+                                height: 50vh;
+                                width: auto;
+                                width: 100%; 
+                                padding: 1rem; 
+                                overflow-y: scroll;
+                            }
+
+                            .listaTecnicos li{
+                                display: flex;
+                                flex-wrap: wrap;
+                                margin-bottom: 2rem;
+                                width: auto;
+                                background: #00000094;
+                                padding: 1rem;
+                                border-radius: 40px;
+                                font-size: 1.5rem;
+                                font-weight: bold;
+                                align-items: center;
+                            }
+
+                            .listaTecnicos li img{
+                                margin-right: 50px;
+                                height: 136px;
+                                width: auto;
+                            }
+
+                        </style>
+                        <div style="
+                        display: flex;
+                        flex-wrap: wrap; 
+                        flex-direction: row; 
+                        justify-content: space-around;
+                        align-items: center;">
+                            <div>
+                                <h3 style="text-align: center; font-size: 2rem">Técnicos cadastrados:</h3>
+                                <ul class="listaTecnicos" id="listaTecnicos"></ul>
+                            </div>
+                            <div>
+                                <h3 style="text-align: center; font-size: 2rem;">Totens cadastrados:</h3>
+                                <ul class="listaTecnicos" id="listaTotens"></ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="./js/actions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/index.js"></script>
+</body>
+
+<script>
+    
+    //localStorage.setItem('userId', );
+
+    var userId = localStorage.getItem('userId');
+    var idEmpresa = localStorage.getItem("idEmpresa")
+    var nomeUser = localStorage.getItem("userName ")
+
+    console.log("   userId: "+userId);
+    console.log("idEmpresa: "+idEmpresa);
+    console.log(" nomeUser: "+nomeUser);
+
+    var empresaNome = "cadastre sua empresa"
+    var empresaCNPJ = "cadastre o CNPJ"
+
+    //listarTotem();
+    //FUNCAO PARA PUXAR OS TOTEMS CADASTRADOS NAQUELE CLIENTE
+
+    //FUNCAO PARA PODER EDITAR O PERFIL
+
+    function editarEmpresa(){
+        Swal.fire({
+            title: "Editar Empresa",
+            text: "Informações da sua empresa:",
+            icon: "warning",
+            iconColor: "#EB1616",
+            html: `
+            <div style="display: flex; flex-direction: column; justify-content: start; ">
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="ipt_nomeEmpresa" placeholder="Nome Empresa">
+                    <label for="floatingPassword">${empresaNome}</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="ipt_cnpjEmpresa" placeholder="CNPJ">
+                    <label for="floatingPassword">${empresaCNPJ}</label>
+                </div>
+            </div>
+            `,
+            background: "#191C24",
+            showCancelButton: true,
+            cancelButtonColor: "#EB1616",
+            cancelButtonText: "Sair",
+            confirmButtonText: "Alterar",
+            confirmButtonColor: "#7066e0",
+          }).then((result) => {
+            if (result.isConfirmed) {
+                //FAZER UM UPDATE NA TABELA DE USUARIO, DE PREFERENCIA DENTRO DE UM TRY AND CATCH PRA FAZER A MENSAGEM DE ERRO
+                
+                nomeEmpresa = document.getElementById("ipt_nomeEmpresa").value;
+                cnpjEmpresa = document.getElementById("ipt_cnpjEmpresa").value;
+                
+                fetch("/pessoa/cadastrarEmpresa", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        nomeEmpresaVar: nomeEmpresa,
+                        cnpjEmpresaVar: cnpjEmpresa,
+                        userIdVar: userId,
+                    }),
+                  })
+                    .then(function (resposta) {
+                      console.log("resposta: ", resposta);
+                        
+                      if (resposta.ok) {
+        
+                        Swal.fire({
+                            title: "Empresa alterada com sucesso!",
+                            text: "Suas credenciais foram alteradas com sucesso!.",
+                            color: "#fff",
+                            icon: "success",
+                            iconColor: "#EB1616",
+                            background: "#191C24",
+            
+                          });
+        
+                      } else {
+                        throw "Houve um erro ao fazer o editarEmpresa()!";  
+                      }
+                    })
+                    .catch(function (resposta) {
+                      console.log(`#ERRO: ${resposta}`);
+                    });
+
+              
+            }
+          });
+    
+    }
+
+    function editarperfil(){ 
+        Swal.fire({
+            title: "Editar Perfil",
+            text: "Escolha qual campo deseja alterar:",
+            icon: "warning",
+            iconColor: "#EB1616",
+            html: `
+            <div style="display: flex; flex-direction: column; justify-content: start; ">
+                <div class="form-floating mb-3">
+                    <input type="username" class="form-control" id="ipt_username" placeholder="Nome usuário">
+                    <label for="floatingInput" id="nomeLabelEditor">${nomeUser}</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="ipt_email" placeholder="E-mail">
+                    <label for="floatingInput" id="emailLabelEditor">${userEmail}</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="ipt_password" placeholder="Senha">
+                    <label for="floatingPassword">Senha</label>
+                </div>
+                
+            </div>
+            `,
+            background: "#191C24",
+            showCancelButton: true,
+            cancelButtonColor: "#EB1616",
+            cancelButtonText: "Sair",
+            confirmButtonText: "Alterar",
+            confirmButtonColor: "#7066e0",
+
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+                //FAZER UM UPDATE NA TABELA DE USUARIO, DE PREFERENCIA DENTRO DE UM TRY AND CATCH PRA FAZER A MENSAGEM DE ERRO
+
+                nomeUser = document.getElementById("ipt_username").value;
+                emailUser = document.getElementById("ipt_email").value;
+                passwordUser = document.getElementById("ipt_password").value
+
+                alert(nomeEmpresa,cnpjEmpresa)
+                
+                fetch("/pessoa/editar/", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        idUserServer : idUser,
+                        nomeUserServer :nomeUser,
+                        emailUserServer :emailUser,
+                        passwordUserServer: passwordUser,
+                    }),
+                  })
+                    .then(function (resposta) {
+                      console.log("resposta: ", resposta);
+              
+                      if (resposta.ok) {
+        
+                        Swal.fire({
+                            title: "Empresa alterada com sucesso!",
+                            text: "Suas credenciais foram alteradas com sucesso!.",
+                            color: "#fff",
+                            icon: "success",
+                            iconColor: "#EB1616",
+                            background: "#191C24",
+            
+                          });
+        
+                      } else {
+                        throw "Houve um erro ao fazer o editarEmpresa()!";  
+                      }
+                    })
+                    .catch(function (resposta) {
+                      console.log(`#ERRO: ${resposta}`);
+                    });
+
+            }
+          });
+    
+    }
+
+    function listarTecnicos(arrayFuncionarios){
+
+        for(i = 0; i < arrayFuncionarios.length; i++){
+
+            var liTecnico = document.createElement('li');
+            liTecnico.innerHTML +=`
+            
+                <img src="./img/user-img.png">
+                <div>
+                    <p>${arrayFuncionarios[i].name}</p>
+                    <p>Cargo: <span style="color: #fff">${arrayFuncionarios[i].type_user}</span></p>
+                    <p style="font-size: 1.3rem; color: #fff">${arrayFuncionarios[i].email}</p>
+                </div>
+            `;
+
+            document.getElementById('listaTecnicos').appendChild(liTecnico);
+        }
+
+    }
+
+    function listarTotem(){
+
+        fetch(`/totem/listar?tb_companies_id=${idEmpresa}`, {
+            method: "GET",
+            headers: {
+              "Content-type": "application/json",
+            },
+
+          }) .then(function (response) {
+            console.log(response);
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Erro na requisição. Status: " + response.status);
+            }
+        })
+            .then(function (resposta) {
+                console.log(resposta)
+
+                
+                
+                for(i = 0; i < resposta.length; i++){
+                    var liTotem = document.createElement('li');
+                    liTotem.innerHTML += `
+                    
+                        <img src="./img/totem.png">
+                        <div>
+                            <p>ID-${resposta[i].id}</p>
+                            <p>Apelido: ${resposta[i].hostname}</p>
+                        </div>
+                        
+                    `;
+
+                    document.getElementById('listaTotens').appendChild(liTotem);
+                }
+            })
+            .catch(function (resposta) {
+              console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+    function gerarDadosUserAtual() {
+
+        fetch(`/pessoa/listar?tb_companies_id=${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            console.log(response);
+
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    
+                    //var nome = document.getElementById("userNome");
+                    //var email = document.getElementById("userEmail");
+                    //var typeUser = document.getElementById("userCargo");
+
+                    listarTecnicos(resposta)
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        if (resposta[i].id == userId) { 
+
+                            var nome = document.getElementById("userNome");
+                            var email = document.getElementById("userEmail");
+                            var typeUser = document.getElementById("userCargo");
+
+                            nome.innerHTML = `<span>${resposta[i].name}</span>`
+                            email.innerHTML = resposta[i].email
+                            typeUser.innerHTML = resposta[i].type_user
+
+
+                            //idEmpresa = resposta[i].fk_empresa
+                            listarTotem()
+                            console.log(resposta[i].email)
+                            console.log(resposta[i].password)
+                            return true
+                        }
+                    }
+                })
+            } else {
+                console.log("Nenhum dado encontrado.");
+            }
+        }).catch(function (error) {
+            console.error("Erro na obtenção dos dados para a table : " + error.message);
+        });
+    }
+
+
+    /*function buscarInstancia() {
+        fetch('https://957f-3-85-160-217.ngrok-free.app/list-instances')
+            .then(response => response.json())
+            .then(data => {
+                // The JSON response is parsed and stored in the 'data' variable
+                var instances = data;
+                var instancesList = '';
+
+                // Iterate over each instance in the 'instances' array
+                instances.forEach(function (instance) {
+                    // Create an HTML list item with the instance ID
+                    instancesList += '<li>' + instance.InstanceId + '</li>';
+                });
+
+                // Set the innerHTML of an HTML element with the ID 'instances-list'
+                // to display the list of instances
+                document.getElementById('instances-list').innerHTML = '<ul>' + instancesList + '</ul>';
+            })
+            .catch(error => console.log(error));
+    }*/
+
+</script>

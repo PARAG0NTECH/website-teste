@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Paragon Tech</title>
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+</head>
+
+<body>
+    <script src="https://kit.fontawesome.com/390ed0de69.js" crossorigin="anonymous"></script>
+    <div class="container">
+        <nav>
+            <div id="menuToggle">
+                <!--
+                A fake / hidden checkbox is used as click reciever,
+                so you can use the :checked selector on it.
+                -->
+                <input type="checkbox" />
+
+                <!--
+                Some spans to act as a hamburger.
+                
+                They are acting like a real hamburger,
+                not that McDonalds stuff.
+                -->
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <!--
+                Too bad the menu has to be inside of the button
+                but hey, it's pure CSS magic.
+                -->
+                <ul id="menu">
+                    <a href="#produto">
+                        <li>Produtos</li>
+                    </a>
+                    <a href="#quemSomos">
+                        <li>Quem somos</li>
+                    </a>
+                    <a href="#contato">
+                        <li>Contato</li>
+                    </a>
+                    <a href="./login.html">
+                        <li>Login</li>
+                    </a>
+                </ul>
+            </div>
+
+            <div class="logo">
+                <img src="./img/logo.png" width="130" alt="">
+            </div>
+            <ul class="ulNavbar">
+                <li>
+                    <a href="#produto">Produtos</a>
+                </li>
+                <li>
+                    <a href="#quemSomos">Quem somos</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+
+        </nav>
+        <main>
+            <!-- <div class="classSpaceText">
+                <div class="textIntrodução"></div>
+                <div class="space"></div>
+            </div> -->
+            <section class="section_1">
+                <div class="section_1_text">
+                    <p style="color:#f1f1f1">EM QUALQUER LUGAR DO</p>
+                    <p style="color: #9637E5;">MUNDO</p>
+                </div>
+                <img class="section_1_planeta" src="./img/planeta_astrounautas.png">
+            </section>
+            <section class="section_2" id="quemSomos">
+                <p class="section_2_titulo">POR QUE A PARAGON ?</p>
+                <div class="caixasMotivos">
+                    <div>
+                        <img class="astronautas_caixa" src="./img/astronauta_1.png">
+                        <p class="caixasMotivos_texto">Experiência e especialização: Garantem que o melhor dos totens será entregue.</p>
+                    </div>
+                    <div>
+                        <img style="width: 3rem;" class="astronautas_caixa" src="./img/astronauta_2.png">
+                        <p class="caixasMotivos_texto">Monitoramento em tempo real: Te permite tomar decisões antes mesmo que o problema aconteça.</p>
+                    </div>
+                    <div>
+                        <img class="astronautas_caixa" src="./img/astronauta_3.png">
+                        <p class="caixasMotivos_texto">Parceria de longo prazo: Visamos sempre uma boa relação com nossos clientes.</p>
+                    </div>
+                    <div>
+                        <img style="width: 3rem;" class="astronautas_caixa" src="./img/astronauta_2.png">
+                        <p class="caixasMotivos_texto">Suporte: Estaremos sempre aqui em qualquer dificuldade.</p>
+                    </div>
+                    <div>
+                        <img class="astronautas_caixa" src="./img/astronauta_3.png">
+                        <p class="caixasMotivos_texto">Cada caso é um caso: Nossa solução é 100% personalizada para você.</p>
+                    </div>
+                    <div>
+                        <img class="astronautas_caixa" src="./img/astronauta_1.png">
+                        <p class="caixasMotivos_texto">Fale com quem entende: Temos experiência de mercado para te oferecer a melhor solução possível.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="section_2">
+                <p class="section_2_titulo">INTEGRANTES</p>
+                <div class="caixasIntegrantes">
+                    <div class="integrantes">
+                        <img src="./img/integrantes/luccas.png">
+                        <p class="integrante_nome">Luccas Bueno</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/LccsBueno">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/luccas-bueno-766b951b0/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/vanessa.png">
+                        <p class="integrante_nome">Vanessa Mireli</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/VanessaMAquino">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/vanessa-aquino-4a411b160/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/samuca.png">
+                        <p class="integrante_nome">Samuel Lucena</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/SamLucena">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/samuellucena/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/miguel.png">
+                        <p class="integrante_nome">Miguel</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/miguelsilvag">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/miguel-silva-539670285/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/rychard.png">
+                        <p class="integrante_nome">Ricardo</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/RicardoVicentepc">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ricardo-vicente-/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/luccas.png">
+                        <p class="integrante_nome">Luccas Bueno</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/LccsBueno">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/luccas-bueno-766b951b0/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/vanessa.png">
+                        <p class="integrante_nome">Vanessa Mireli</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/VanessaMAquino">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/vanessa-aquino-4a411b160/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/samuca.png">
+                        <p class="integrante_nome">Samuel Lucena</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/SamLucena">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/samuellucena/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/miguel.png">
+                        <p class="integrante_nome">Miguel</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/miguelsilvag">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/miguel-silva-539670285/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="integrantes">
+                        <img src="./img/integrantes/rychard.png">
+                        <p class="integrante_nome">Ricardo</p>
+                        <p class="integrante_funcao">Co-fundador da <br>Paragon</p>
+                        <div class="bar_contato"></div>
+                        <h2 class="integrante_contato">Contato</h2>
+                        <div class="contato_integrantes">
+                            <a href="https://github.com/RicardoVicentepc">
+                                <i id="github" class="fa-brands fa-square-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ricardo-vicente-/">
+                                <i id="linkedin" class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section_cine" id="produto" >
+                <h1>
+                    Cine Guardian
+                    <img src="./img/pipoca.png" width="50px">
+                </h1>
+                <div class="div_cine_info">
+                    <div>
+                        <p>Chega de travamentos!<br>Realizamos o monitoramento dos seus totens para te avisar quando algo de ruim está para acontecer</p>
+                        <img src="./img/Component 65.png" width="300px">
+                    </div>
+                    <div>
+                        <img src="./img/Component 57.png" width="350px">
+                        <p>Proporcionamos gráficos e insights para você tomar a melhor decisão</p>
+                    </div>
+                    <div>
+                        <p>Todas as informações que precisa saber a um clique de distância</p>
+                        <img src="./img/Component 58.png" width="350px">
+                    </div>
+                    <div>
+                        <p>Venha conhecer um pouco mais sobre o <a href="./CineGuardian.html" style="color: #EB1616;">CineGuardian</a></p>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="footer_ondas">
+                    <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 590" xmlns="http://www.w3.org/2000/svg"
+                        class="transition duration-300 ease-in-out delay-150">
+                        <path
+                            d="M 0,600 C 0,600 0,400 0,400 C 120.60714285714286,388.42857142857144 241.21428571428572,376.85714285714283 376,385 C 510.7857142857143,393.14285714285717 659.7500000000001,421 786,410 C 912.2499999999999,399 1015.7857142857142,349.1428571428571 1121,341 C 1226.2142857142858,332.8571428571429 1333.107142857143,366.42857142857144 1440,400 C 1440,400 1440,600 1440,600 Z"
+                            stroke="none" stroke-width="0" fill="#9637e5" fill-opacity="1"
+                            class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
+                    </svg>
+                </div>
+                <div class="footer_conteudo" id="contato">
+                    <div>
+                        <p style="margin-bottom: 1rem;">Conheça nossa página no Github</p>
+                        <p style="font-size: 1.1rem">Estrutura de como funciona o nosso projeto</p>
+                        <a href="https://github.com/PARAG0NTECH">
+                            <i id="github" class="fa-brands fa-square-github"></i>
+                        </a>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="margin-bottom: 1rem;">Dúvidas, sugestões, críticas ?</p>
+                        <p style="font-size: 1.1rem">Aceitamos ideias novas por meio do nosso e-mail</p>
+                        <a href="https://github.com/PARAG0NTECH">
+                            <i class="fa-solid fa-envelope" style="color: #252525; font-size: 4rem"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

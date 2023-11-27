@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/pipoca.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/metrica.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Métrica</title>
+</head>
+<body onload="idEmpresa()">
+    <div class="container-fluid position-relative d-flex p-0">
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="CineGuardian.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><img src="./img/pipoca.png" width="40" height="40" alt="">CineGuardian</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="./img/user-img.png" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0" id="h6_name"></h6>
+                        <span id="type_user"></span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="#" class="nav-item nav-link active" id="pag_totens"><i class="fa fa-tachometer-alt me-2"></i>Totens</a>
+                    <a href="./cadastroTecnico.html" id="pag_tecnico" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Cadastrar Técnico</a>
+                    <a href="./chart.html" class="nav-item nav-link" id="pag_estatisticas"><i class="fa fa-chart-bar me-2"></i>Estatísticas</a>
+                </div>
+            </nav>
+        </div>
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <!-- <a href="CineGuardian.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a> -->
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="/website/public/CineGuardian/img/user-img.png" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex" id="span_nameUser"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="./perfil.html" class="dropdown-item">Meu perfil</a>
+                            <a href="#" class="dropdown-item">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3" style="display: flex; gap: 5%">
+
+                        <!-- <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Máquinas ativas</p>
+                                <h6 class="mb-0">8 / 10</h6>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Reiniciadas por dia</p>
+                                <h6 class="mb-0">0.30/dia</h6>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Requerimento de suporte</p>
+                                <h6 class="mb-0">4/semana</h6>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+
+            <!-- Sales Chart Start -->
+
+            <!-- Sales Chart End -->
+
+           
+                <div class="container-fluid">
+                    <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                            <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3" style="box-shadow: 0 0 80px #388697;">
+                                <div class="d-flex align-items-center justify-content-between mb-3"
+                                    style="flex-direction: column">
+                                    <a href="CineGuardian.html" class="">
+                                        <h3 class="text-primary"><img src="./img/pipoca.png" width="40" height="40"
+                                                alt="">CineGuardian</h3>
+                                    </a>
+                                    <h3 class="text-primary"
+                                        style="font-size: 2.3rem; text-align:center;color: #388697!important;text-shadow: -1px 1px 15px #388697;">
+                                        Métricas</h3>
+        
+                                </div>
+                                <div class="form-floating mb-3">
+                                    CPU:
+                                    <input  type="number" class="form-control" id="percentual_cpu" placeholder="CPU">
+                                    
+                                </div>
+                                RAM:
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="percentual_ram" placeholder="RAM">
+                                    
+                                </div>
+                                DISK:
+                                <div class="form-floating mb-4">
+                                    <input type="number" class="form-control" id="percentual_disk" placeholder="DISK">
+                                    
+                                </div>
+                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4"
+                                    onclick="cadastrarMetricas()">Cadastrar Métricas</button>
+                                <!-- <p class="text-center mb-0">Já tem uma conta ? <a href="./signup.html">Login</a></p>
+                                <p class="text-center mb-0" style="margin-top: 1rem">Deseja fazer o cadastro de um ? <a href="./signupGerente.html">perfil gerencial </a>?</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+        <!-- Content End -->
+    
+</div>
+</body>
+</html>
+<script>
+    var accountId = localStorage.getItem('accountId');
+    var idDaEmpresa = null;
+    
+    function idEmpresa(){
+            fetch('/pessoa/listarEmpresas', { cache: 'no-store' }).then(function (response) {
+                console.log(response);
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        for (let i = 0; i < resposta.length; i++) {
+                            if(accountId == resposta[i].tb_users_id){
+                                idDaEmpresa += resposta[i].id;
+                                return resposta[i].id;
+                            }
+                        }
+                    })
+                } else {
+                    console.log("Nenhum dado encontrado.");
+                }
+            }).catch(function (error) {
+                console.error("Erro na obtenção dos dados para a table : " + error.message);
+            });
+        }
+        
+
+        function cadastrarMetricas(){
+            var percentualCPUVar = percentual_cpu.value;
+            var percentualDISKVar = percentual_disk.value;
+            var percentualRAMVar = percentual_ram.value;
+            console.log(percentualCPUVar)
+            console.log(percentualRAMVar)
+            console.log(percentualDISKVar)
+            console.log("IdEmpresa : " + idDaEmpresa);
+
+            if (percentualCPUVar == "" || percentualDISKVar == "" || percentualRAMVar == "" || idDaEmpresa == null) {
+                alert("Preencha os campos corretamente");
+                return false;
+            }
+            fetch("/pessoa/cadastrarMetrica", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    idEmpresaServer: idDaEmpresa,
+                    cpuServer: percentualCPUVar,
+                    ramServer: percentualRAMVar,
+                    diskServer: percentualDISKVar
+                })
+            }).then(function (resposta) {
+                console.log("resposta : ", resposta)
+    
+                if (resposta.ok) {
+                    alert("Cadastro feito com sucesso");
+                    //setTimeout(() => {
+                      //  window.location = "./index.html"
+                    //}, 2000)
+                } else {
+                    throw ("Erro ao realizar cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+            return false
+        }
+    
+    
+</script>
